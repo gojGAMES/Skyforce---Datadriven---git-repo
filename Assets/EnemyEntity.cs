@@ -18,7 +18,8 @@ public class EnemyEntity : EntityBase
         if (iFrames > 0)
         {
             iFrames -= Time.deltaTime;
-            _spriteRenderer.color = new Color(Mathf.Clamp((float)iFrames / (float)InvincibilityDuration, 0, 1), 0, 0);
+            float colorVal = 1f - Mathf.Clamp((float)iFrames / (float)InvincibilityDuration, 0, 1);
+            _spriteRenderer.color = new Color(1, colorVal, colorVal);
         }
     }
 

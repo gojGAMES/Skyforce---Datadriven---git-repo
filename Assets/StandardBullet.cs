@@ -11,7 +11,6 @@ public class StandardBullet : BulletBase
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(transform.rotation.eulerAngles.z);
         Direction = Angle2Vector(transform.rotation.eulerAngles.z);
     }
 
@@ -40,6 +39,7 @@ public class StandardBullet : BulletBase
 
     private void OnCollisionEnter2D(Collision2D coll)
     {
+        Debug.Log("bullet detects collision");
         if (coll.gameObject.TryGetComponent<EntityBase>(out EntityBase entity))
         {
             if (TargetTypesList.Contains(entity.EntityType))
