@@ -9,12 +9,22 @@ public enum EntityTypes
 }
 public abstract class EntityBase : MonoBehaviour
 {
-    private int health;
+    [SerializeField] protected int health;
     public EntityTypes EntityType;
-    [SerializeField] private float InvincibilityDuration = .1f;
-    private float iFrames = 0;
+    [SerializeField] protected float InvincibilityDuration = .1f;
+    protected float iFrames = 0;
 
-    public abstract bool TryDamage();
+    public bool TryDamage(int damage)
+    {
+        if (iFrames > 0)
+        {
+            return false;
+        }
+        OnHit(damage);
+        return true;
+    }
+
+    protected abstract void OnHit(int damage);
 
     public abstract void Death();
 }

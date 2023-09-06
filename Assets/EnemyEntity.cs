@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : EntityBase
+public class EnemyEntity : EntityBase
 {
     private SpriteRenderer _spriteRenderer;
     // Start is called before the first frame update
@@ -37,4 +38,6 @@ public class PlayerHealth : EntityBase
     {
         throw new System.NotImplementedException();
     }
+    
+    
 }

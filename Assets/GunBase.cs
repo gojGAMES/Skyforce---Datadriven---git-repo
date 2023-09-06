@@ -37,7 +37,7 @@ public class GunBase : MonoBehaviour
 
     void SpawnBullet()
     {
-        Instantiate(Bullet, BulletSpawnPos, quaternion.identity);
+        Instantiate(Bullet, transform.position + BulletSpawnPos, transform.rotation);
     }
 
     private void OnEnable()
