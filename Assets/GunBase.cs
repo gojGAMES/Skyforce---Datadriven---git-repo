@@ -35,9 +35,9 @@ public class GunBase : MonoBehaviour
         fireCooldown = FireRate;
     }
 
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
-        Gizmos.color = new Color(1, 1, 0, 0.75f);
+        Gizmos.color = new Color(1, 1, 0, 0.5f);
         Gizmos.DrawLine(transform.position, transform.position + 2 * Angle2Vector(transform.rotation.eulerAngles.z));
     }
     
