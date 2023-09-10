@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public static float ScreenWidth = 20;
     public static float ScreenHeight = 9;
+
+    public GameObject GameOverScreen;
     
     // Start is called before the first frame update
     void Start()
@@ -17,5 +19,10 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void GameOver()
+    {
+        GameOverScreen.SetActive(true);
     }
 }

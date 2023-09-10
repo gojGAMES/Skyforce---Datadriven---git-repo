@@ -5,10 +5,17 @@ using UnityEngine;
 public class PlayerHealth : EntityBase
 {
     private SpriteRenderer _spriteRenderer;
+    public GameManager GameManager;
+    
     // Start is called before the first frame update
     void Start()
     {
         _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+
+        if (GameManager == null)
+        {
+            GameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
+        }
     }
 
     // Update is called once per frame
@@ -36,6 +43,16 @@ public class PlayerHealth : EntityBase
 
     public override void Death()
     {
-        throw new System.NotImplementedException();
+        if (gameObject.TryGetComponent<PlayerMovement>(out PlayerMovement movement))
+        {
+            movement.enabled = false;
+        }
+
+        if (gameObject.TryGetComponent(out CircleCollider2D collider2D))
+        {
+            collider2D.enabled = false;
+        }
+        
+        GameManager.GameOver();
     }
 }
