@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class EnemyEntity : EntityBase
 {
+    public int ScoreValue;
     private SpriteRenderer _spriteRenderer;
     // Start is called before the first frame update
     void Start()
@@ -37,7 +38,11 @@ public class EnemyEntity : EntityBase
 
     public override void Death()
     {
-        throw new System.NotImplementedException();
+        if (GameObject.FindWithTag("GameManager").TryGetComponent(out GameManager gameManager))
+        {
+            gameManager.UpdateScore(ScoreValue);
+        }
+        Destroy(gameObject);
     }
     
     

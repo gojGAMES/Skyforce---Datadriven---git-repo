@@ -27,6 +27,8 @@ public class PlayerHealth : EntityBase
             float colorVal = 1f - Mathf.Clamp((float)iFrames / (float)InvincibilityDuration, 0, 1);
             _spriteRenderer.color = new Color(1, colorVal, colorVal);
         }
+
+        //_spriteRenderer.color = new Color(1, 1, 1, Mathf.Sin(Time.unscaledTime));
     }
 
     protected override void OnHit(int damage)
@@ -43,7 +45,7 @@ public class PlayerHealth : EntityBase
 
     public override void Death()
     {
-        if (gameObject.TryGetComponent<PlayerMovement>(out PlayerMovement movement))
+        if (gameObject.TryGetComponent(out PlayerMovement movement))
         {
             movement.enabled = false;
         }
@@ -51,6 +53,11 @@ public class PlayerHealth : EntityBase
         if (gameObject.TryGetComponent(out CircleCollider2D collider2D))
         {
             collider2D.enabled = false;
+        }
+
+        if (gameObject.TryGetComponent(out PlayerCombat combat))
+        {
+            combat.enabled = false;
         }
         
         GameManager.GameOver();

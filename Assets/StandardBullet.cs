@@ -40,7 +40,7 @@ public class StandardBullet : BulletBase
     private void OnCollisionEnter2D(Collision2D coll)
     {
         Debug.Log("bullet detects collision");
-        if (coll.gameObject.TryGetComponent<EntityBase>(out EntityBase entity))
+        if (coll.gameObject.TryGetComponent(out EntityBase entity))
         {
             if (TargetTypesList.Contains(entity.EntityType))
             {

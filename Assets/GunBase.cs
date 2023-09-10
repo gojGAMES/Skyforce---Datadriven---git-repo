@@ -10,6 +10,7 @@ public class GunBase : MonoBehaviour
     public float FireOffset;
     public GameObject Bullet;
     public Vector3 BulletSpawnPos;
+    public bool isLaserWeapon = false;
     
     private float fireCooldown = 0;
     // Start is called before the first frame update
@@ -19,6 +20,11 @@ public class GunBase : MonoBehaviour
         if (BulletSpawnPos == null)
         {
             BulletSpawnPos = transform.position;
+        }
+
+        if (Bullet == null)
+        {
+            
         }
     }
 
@@ -55,7 +61,12 @@ public class GunBase : MonoBehaviour
 
     void SpawnBullet()
     {
-        Instantiate(Bullet, transform.position + BulletSpawnPos, transform.rotation);
+        if (!isLaserWeapon)
+            Instantiate(Bullet, transform.position + BulletSpawnPos, transform.rotation);
+        else
+        {
+            Instantiate(Bullet, transform.position + BulletSpawnPos, transform.rotation, transform);
+        }
     }
 
     private void OnEnable()
