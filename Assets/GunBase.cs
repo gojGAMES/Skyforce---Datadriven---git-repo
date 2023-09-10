@@ -10,6 +10,7 @@ public class GunBase : MonoBehaviour
     public float FireOffset;
     public GameObject Bullet;
     public Vector3 BulletSpawnPos;
+    //TODO: Separate laser and bullet weapons using inheritance
     public bool isLaserWeapon = false;
     
     private float fireCooldown = 0;
