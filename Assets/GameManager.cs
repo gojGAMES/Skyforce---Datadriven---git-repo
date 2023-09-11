@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject GameOverScreen;
 
+    public EventManager EventManager;
+
     private int Score;
     
     
@@ -32,5 +34,6 @@ public class GameManager : MonoBehaviour
     public void UpdateScore(int scoreDelta)
     {
         Score += scoreDelta;
+        EventManager.PublishScoreChangeEvent(Score);
     }
 }

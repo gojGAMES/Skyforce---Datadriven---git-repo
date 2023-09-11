@@ -68,6 +68,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8427185371169508939, guid: 838c8f8dcb2539543a29cc761ca9045f, type: 3}
+      propertyPath: Speed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427185371169508939, guid: 838c8f8dcb2539543a29cc761ca9045f, type: 3}
       propertyPath: TargetTypesList.Array.data[0]
       value: 0
       objectReference: {fileID: 0}

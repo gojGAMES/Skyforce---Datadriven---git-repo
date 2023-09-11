@@ -6,6 +6,7 @@ public class PlayerHealth : EntityBase
 {
     private SpriteRenderer _spriteRenderer;
     public GameManager GameManager;
+    public EventManager EventManager;
     
     // Start is called before the first frame update
     void Start()
@@ -15,6 +16,11 @@ public class PlayerHealth : EntityBase
         if (GameManager == null)
         {
             GameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
+        }
+        
+        if (EventManager == null)
+        {
+            EventManager = GameObject.FindWithTag("GameManager").GetComponent<EventManager>();
         }
     }
 
@@ -34,6 +40,9 @@ public class PlayerHealth : EntityBase
     protected override void OnHit(int damage)
     {
         health -= damage;
+
+        EventManager.PublishHealthChange(health);
+        
         if (health <= 0)
         {
             Death();
